@@ -1,0 +1,78 @@
+---
+title: "Prezentacja - zainteresowania"
+format: revealjs
+theme: sky  # niebieskie tło
+editor: visual
+---
+
+## **Wprowadzenie – skąd wzięła się moja pasja**
+
+Moją pasją jest motoryzacja.Od zawsze fascynowały mnie samochody, ich budowa, brzmienie silnika i sposób działania. Gdy byłem młodszy często uczęszczałem na wystawy samochodów i różne imprezy motoryzacyjne na torze poznań.
+
+## **Co najbardziej mnie interesuje w motoryzacji**
+
+Mechanika pojazdów i modyfikacje wizualne samochodów.
+
+## **Moje doświadczenia i aktywności**
+
+Uczestniczę w eventach, targach i zlotach smochodowych.
+
+Hobbystycznie pomagam mojemu znajomemu przy naprawie aut.
+
+## Zdjęcia
+
+![Supra](./zdjecia/Supra.jpeg){width="30%"} ![BMW](./zdjecia/BMW.jpeg){width="30%"} ![Mercedes](./zdjecia/Mercedes.jpeg){width="30%"}
+
+# Analiza: Moc vs Spalanie - dane
+
+```{r}
+#| fig-cap: "Prosta zależność mocy od spalania"
+library(ggplot2)
+data<- mtcars
+data
+
+
+```
+
+# Wizualizacja
+
+```{r}
+# Bezpośredni wykres z mtcars
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point(size = 4, color = "steelblue", alpha = 0.7) +
+  labs(
+    title = "Zależność mocy silnika od spalania",
+    subtitle = "Im większa moc, tym zazwyczaj większe spalanie",
+    x = "Moc (HP - konie mechaniczne)",
+    y = "Spalanie (MPG - mile na galon)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    axis.title = element_text(size = 12)
+  )
+
+```
+
+# Wykres pojemność silnika vs spalanie
+
+```{r}
+
+library(ggplot2)
+
+
+ggplot(mtcars, aes(x = disp, y = mpg)) +
+  geom_point(size = 4, color = "steelblue", alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "darkgreen", fill = "lightgreen") +
+  labs(
+    title = "Zależność pojemności silnika od spalania",
+    subtitle = paste("Korelacja: r =", round(cor(mtcars$disp, mtcars$mpg), 2)),
+    x = "Pojemność silnika (cubic inches)",
+    y = "Spalanie (miles per gallon)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold")
+  )
+
+```
