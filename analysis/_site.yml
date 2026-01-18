@@ -10,7 +10,7 @@ navbar:
   - text: Analiza danych
     href: analiza_danych.html
   - text: Prezentacja
-    href: prezentacja.html
+    href: Prezentacja.html
 output:
   workflowr::wflow_html:
     toc: yes
