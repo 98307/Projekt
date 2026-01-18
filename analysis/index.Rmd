@@ -8,4 +8,18 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+## O mnie
+
+**Imie i nazwisko** Adam Kowalski \
+**Uczelnia i kierunek studiów** Informatyka i inżynieria danych na Uniwersytecie Przyrodniczym w Poznaniu.
+
+![Zdjęcie uczelni](https://upload.wikimedia.org/wikipedia/commons/f/f8/UP_Poznan.jpg) *Źródło: [<https://pl.wikipedia.org/wiki/Uniwersytet_Przyrodniczy_w_Poznaniu>]*
+
+## O stronie
+
+Strona została stworzona przy użyciu pakietu **workflowr** dla R.
+
+## Kontakt
+
+-   Email: [AK\@email.com](mailto:twój@email.com){.email}
+-   GitHub: [AK-profil](https://github.com/98307)

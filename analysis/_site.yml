@@ -5,10 +5,12 @@ navbar:
   left:
   - text: Home
     href: index.html
-  - text: About
-    href: about.html
-  - text: License
-    href: license.html
+  - text: CV
+    href: CV.html
+  - text: Analiza danych
+    href: analiza_danych.html
+  - text: Prezentacja
+    href: Prezentacja.html
 output:
   workflowr::wflow_html:
     toc: yes
