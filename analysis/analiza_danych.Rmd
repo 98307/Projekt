@@ -1,0 +1,137 @@
+---
+title: "analiza_danych"
+author: "98307"
+date: "2026-01-17"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## 1. Opis zbioru danych
+
+Zbiór danych **mtcars** (Motor Trend Car Road Tests) zawiera informacje o 32 samochodach z 1974 roku.
+Dane pochodzą z pakietu **datasets** w R.
+
+**Zmienne w zbiorze:**
+- `mpg` - spalanie (miles per gallon)
+- `cyl` - liczba cylindrów
+- `disp` - pojemność silnika
+- `hp` - moc (horsepower)
+- `wt` - waga (1000 lbs)
+- i inne...
+
+## 2. Przygotowanie środowiska i danych
+
+
+```{r}
+# biblioteki
+library(dplyr)    
+library(ggplot2)  
+```
+
+```{r}
+#zbiór danych
+data(mtcars)
+
+mtcars <- mtcars %>%
+  mutate(
+    cyl = as.factor(cyl),   
+    gear = as.factor(gear)  
+  )
+
+# wyswietlenie danych
+head(mtcars)
+```
+## Podstawowe obliczenia stystyczna
+```{r}
+#statystyki dlanzmiennej mpg - zużycie paliwa
+cat("\nSzczegółowe statystyki dla zmiennej 'mpg' (miles per gallon):\n")
+cat("Średnia:", mean(mtcars$mpg), "\n")
+cat("Minimum:", min(mtcars$mpg), "\n")
+cat("Maksimum:", max(mtcars$mpg), "\n")
+cat("Mediana:", median(mtcars$mpg), "\n")
+cat("Odchylenie standardowe:", sd(mtcars$mpg), "\n")
+```
+
+```{r}
+# grupowanie po liczbie cylindrów i obliczanie statystyk
+summary_stats <- mtcars %>%
+  group_by(cyl) %>%  
+  summarise(
+    mean_mpg = mean(mpg, na.rm = TRUE),  
+    sd_mpg = sd(mpg, na.rm = TRUE),      
+    n = n()                              
+  )
+
+# Wyświetl wyniki
+summary_stats
+```
+
+
+```{r}
+# filtrowanie tylko samochodów o mocy większej niż 100 KM
+mtcars_filtered <- mtcars %>%
+  filter(hp > 100) %>%  # filtruj po mocy
+  mutate(
+    # Oblicz moc na cylinder (konie mechaniczne na cylinder)
+    hp_per_cyl = hp / as.numeric(as.character(cyl))
+  )
+
+# przefiltrowane dane
+head(mtcars_filtered)
+```
+
+```{r}
+# Wykres słupkowy średniego spalania wg liczby cylindrów
+ggplot(mtcars, aes(x = cyl, y = mpg, fill = cyl)) +
+  stat_summary(geom = "bar", fun = "mean") +  # słupki pokazujące średnią
+  labs(
+    title = "Średnie spalanie w zależności od liczby cylindrów",
+    x = "Liczba cylindrów",
+    y = "Średnie MPG (miles per gallon)",
+    fill = "Cylindry"
+  ) +
+  theme_minimal()
+
+# KOMENTARZ: Wykres pokazuje, że samochody z mniejszą liczbą cylindrów 
+# (4 cyl) mają najgorsze średnie spalanie (~26 MPG), podczas gdy 
+# samochody z 8 cylindrami mają najlepsze spalanie (~15 MPG).
+```
+
+
+```{r}
+
+mtcars_ordered <- mtcars[order(mtcars$wt), ]
+#wykres wagi od spalania
+ggplot(mtcars_ordered, aes(x = wt, y = mpg)) +
+  geom_line(color = "blue", linewidth = 1) +      
+  geom_point(color = "red", size = 2) +     
+  labs(
+    title = "Zależność spalania od wagi samochodu",
+    x = "Waga (1000 lbs)",
+    y = "MPG (miles per gallon)"
+  ) +
+  theme_minimal()
+
+# KOMENTARZ: Wykres wyraźnie pokazuje ujemną korelację między wagą 
+# samochodu a jego efektywnością paliwową. Cięższe samochody mają 
+# większe spalanie.
+```
+
+
+```{r}
+# boxplot spalanie od liczby biegów
+ggplot(mtcars, aes(x = gear, y = mpg, fill = gear)) +
+  geom_boxplot() +  
+  labs(
+    title = "Rozkład spalania w zależności od liczby biegów",
+    x = "Liczba biegów",
+    y = "MPG (miles per gallon)",
+    fill = "Biegi"
+  ) +
+  theme_minimal()
+
+# KOMENTARZ: Samochody z 4 biegami mają najwyższą medianę spalania 
+# (~25 MPG) i najmniejszy rozrzut wartości. Samochody z 3 biegami 
+# mają najgorsze spalanie i największą zmienność.
+```

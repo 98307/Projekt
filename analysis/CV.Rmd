@@ -1,0 +1,47 @@
+---
+title: "CV"
+author: "98307"
+date: "2026-01-17"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+# Twoje Imię i Nazwisko
+
+**Adam Kowalski**\
+Email: [adamkowalski\@email.com](mailto:adamkowalski@email.com){.email}\
+Telefon: +48 123 456 789
+
+## Wykształcenie
+
+
+Lata              | Kierunek                                  | Profil                   | Stopień
+----------------- | ----------------------------------------- | ------------------------- | --------------------
+2023-obecnie      | Uniwersytet Przyrodniczy w Poznaniu       | Informatyka i inżynieria danych               | Studia inżynierskie
+2019-2023         | Liceum Akademickie Da Vinci                | Profil matematyczno-geograficzny| Matura
+## Umiejętności
+
+### Programowanie
+
+-   R (zaawansowany)
+-   Python (podstawowy)
+-   SQL (podstawowy)
+-   Git (podstawowy)
+
+### Analiza danych
+
+-   Przetwarzanie danych (dplyr, tidyr)
+-   Wizualizacja (ggplot2)
+-   Analiza statystyczna
+-   Raportowanie (R Markdown, Quarto)
+
+### Doświadczenie 
+- Projektowanie strony internetowej dla sklepu handlującego zegarkami.
+
+
+### Języki
+
+-   Polski (ojczysty)
+-   Angielski (B2/C1)
+-   Hiszpański (A2)
