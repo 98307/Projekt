@@ -777,7 +777,7 @@ summary_stats</code></pre>
 3 8         15.1   2.56    14</code></pre>
 <pre class="r"><code># filtrowanie tylko samochodów o mocy większej niż 100 KM
 mtcars_filtered &lt;- mtcars %&gt;%
-  filter(hp &gt; 100) %&gt;%  # filtruj po mocy
+  filter(hp &gt; 100) %&gt;%  # filtrowanie po mocy
   mutate(
     # Oblicz moc na cylinder (konie mechaniczne na cylinder)
     hp_per_cyl = hp / as.numeric(as.character(cyl))
@@ -1060,4 +1060,5 @@ $(document).ready(function () {
 
 </body>
 </html>
+
 
