@@ -9,11 +9,12 @@ navbar:
     href: CV.html
   - text: Analiza danych
     href: analiza_danych.html
-  - text: Prezentacja
-    href: Prezentacja.html
+  - text: prezentacja.html
+    href: prezentacja.html
 output:
   workflowr::wflow_html:
     toc: yes
     toc_float: yes
     theme: cosmo
     highlight: textmate
+
