@@ -94,8 +94,8 @@ ggplot(mtcars, aes(x = cyl, y = mpg, fill = cyl)) +
   theme_minimal()
 
 # KOMENTARZ: Wykres pokazuje, że samochody z mniejszą liczbą cylindrów 
-# (4 cyl) mają najgorsze średnie spalanie (~26 MPG), podczas gdy 
-# samochody z 8 cylindrami mają najlepsze spalanie (~15 MPG).
+# (4 cyl) mają najlepsze średnie spalanie (~26 MPG), podczas gdy 
+# samochody z 8 cylindrami mają najgorsze spalanie (~15 MPG).
 ```
 
 
